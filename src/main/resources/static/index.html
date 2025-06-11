@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saber Hussain | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <style>
+    /* Base Reset & Typography */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      background-color: #f0f2f5; /* Lighter, subtle background */
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit; /* Inherit color by default, set specifically where needed */
+    }
+
+    /* Header/Nav */
+    header {
+      position: sticky; /* Changed to sticky for better user experience */
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.98); /* Slightly less transparent */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* More pronounced shadow */
+      z-index: 100;
+    }
+    .nav-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 15px 25px; /* Increased padding */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.8rem; /* Slightly larger */
+      font-weight: 700; /* Bolder */
+      color: #005f73;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px; /* Increased gap */
+    }
+    nav ul li a {
+      font-weight: 600; /* Bolder nav links */
+      padding: 10px 15px; /* Increased padding */
+      border-radius: 6px; /* Slightly more rounded */
+      transition: background 0.3s ease, color 0.3s ease; /* Smooth transition */
+      color: #555;
+    }
+    nav ul li a:hover,
+    nav ul li a.active { /* Added active state */
+      background: #007ead; /* A bit brighter blue on hover/active */
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh; /* Use min-height to ensure it takes full viewport height */
+      background: linear-gradient(135deg, #005f73 0%, #0a9396 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 20px; /* Adjusted padding for sticky header */
+      color: #fff;
+    }
+    .hero-content {
+      max-width: 700px; /* Wider content area */
+      padding: 30px;
+      background-color: rgba(255,255,255,0.1); /* Subtle overlay for content */
+      border-radius: 12px;
+      backdrop-filter: blur(5px); /* Glassmorphism effect */
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.2);
+    }
+    .hero img {
+      width: 180px; /* Larger image */
+      height: 180px;
+      border-radius: 50%;
+      border: 6px solid rgba(255,255,255,0.8); /* Thicker, slightly transparent border */
+      margin-bottom: 25px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Shadow for the image */
+    }
+    .hero h1 {
+      font-size: 3.5rem; /* Larger heading */
+      margin-bottom: 15px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.2rem; /* Larger paragraph */
+      opacity: 0.95;
+      margin-bottom: 30px;
+    }
+    .hero .cta-button {
+      display: inline-block;
+      background: #007ead;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .hero .cta-button:hover {
+      background: #005f73;
+      transform: translateY(-2px);
+    }
+
+    /* General Section Styling */
+    .section {
+      padding: 100px 20px; /* More vertical padding */
+      max-width: 1000px;
+      margin: auto;
+      position: relative; /* For potential future animations/effects */
+    }
+    .section h2 {
+      font-size: 3rem; /* Larger section titles */
+      margin-bottom: 40px; /* More space below title */
+      color: #005f73;
+      text-align: center;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .section h2::after { /* Underline effect */
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: #0a9396;
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid; /* Using Grid for better layout control */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+      gap: 30px; /* Increased gap */
+    }
+    .card {
+      background: #fff;
+      padding: 30px; /* More padding */
+      border-radius: 12px; /* More rounded corners */
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Stronger shadow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      transform: translateY(-8px); /* More pronounced lift */
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* Even stronger shadow on hover */
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      color: #007ead;
+      margin-bottom: 15px;
+    }
+    .card p {
+      font-size: 1.1rem;
+      color: #666;
+    }
+    .card p strong {
+      color: #333;
+    }
+
+    /* Skills List */
+    ul.skills {
+      list-style: none;
+      columns: 2; /* Still good for skills */
+      gap: 20px; /* Increased gap */
+      font-size: 1.1rem;
+      padding: 0 20px; /* Some padding for alignment */
+    }
+    ul.skills li {
+      padding: 8px 0;
+      color: #444;
+      display: flex;
+      align-items: center;
+    }
+    ul.skills li::before {
+      content: "⭐"; /* More engaging bullet point */
+      color: #0a9396;
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+
+    /* Contact Section */
+    .contact-info {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .contact-info a {
+      color: #007ead;
+      display: block; /* Each contact on new line */
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+    .contact-info a:hover {
+      color: #005f73;
+      text-decoration: underline;
+    }
+    .contact-info a:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #001219;
+      color: #fff;
+      text-align: center;
+      padding: 30px 0; /* More padding */
+      margin-top: 60px; /* More space before footer */
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #94d2bd;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        padding: 10px 20px;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .section {
+        padding: 60px 15px;
+      }
+      .section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+      }
+      .cards {
+        grid-template-columns: 1fr; /* Stack cards on small screens */
+      }
+      ul.skills {
+        columns: 1; /* One column for skills on small screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero img {
+        width: 120px;
+        height: 120px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .logo {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">Saber Hussain</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="project.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <img src="profile.jpg" alt="Profile Image">
+      <h1>Welcome to My Portfolio</h1>
+      <p>Hi! I'm Saber Hussain, a passionate Computer Science and Engineering student. Here, you can explore my academic journey, technical skills, and projects. Feel free to connect!</p>
+      <a href="#projects" class="cta-button">View My Projects</a>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Saber Hussain. All rights reserved.</p>
+  </footer>

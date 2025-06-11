@@ -1,0 +1,6 @@
+com\myApp\portfolio\PortfolioApplication.class
+com\myApp\portfolio\model\Skill.class
+com\myApp\portfolio\model\Project.class
+com\myApp\portfolio\PortfolioController.class
+com\myApp\portfolio\model\Education.class
+com\myApp\portfolio\model\Contact.class
